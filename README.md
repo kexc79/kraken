@@ -6,11 +6,11 @@
 
 ## Развёртывание на Ubuntu через git clone
 
-Нужны Git, Docker Engine и Docker Compose v2 или новее. Репозиторий приватный:
-для клонирования используйте свой GitHub SSH-ключ или HTTPS с авторизацией.
+Нужны Git, Docker Engine и Docker Compose v2 или новее. Репозиторий публичный:
+клонирование по HTTPS не требует авторизации в GitHub.
 
 ```bash
-git clone git@github.com:kexc79/kraken.git
+git clone https://github.com/kexc79/kraken.git
 cd kraken
 bash ./kraken.sh init
 nano config/.env
