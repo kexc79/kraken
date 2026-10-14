@@ -1,0 +1,21 @@
+.env
+.env.*
+.req
+config/
+logs/
+.deploy/
+.venv/
+__pycache__/
+*.log
+*.json
+
+# Sanitized configuration templates are safe to commit.
+!.env.example
+!.env.deploy.example
+!.req.example
+.run.lock
+*.upload
+*.pem
+*.key
+*.p12
+*.pfx

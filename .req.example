@@ -1,0 +1,5 @@
+# Runtime credentials. This is NOT a pip requirements file.
+ORACLE_USER=YOUR_ORACLE_USER
+ORACLE_PASSWORD="CHANGE_ME"
+ORACLE_DSN=oracle.example.com:1521/ORCL
+OPENAI_API_KEY=YOUR_OPENAI_API_KEY

@@ -1,0 +1,33 @@
+services:
+  pharma:
+    image: kraken-pharma:local
+    build: .
+    platform: linux/amd64
+    user: "${APP_UID:-1000}:${APP_GID:-1000}"
+    init: true
+    restart: "no"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      TZ: Europe/Minsk
+    volumes:
+      - type: bind
+        source: ${CONFIG_DIR:-./config}
+        target: /config
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./logs
+        target: /logs
+        bind:
+          create_host_path: false
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    stop_grace_period: 30s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
