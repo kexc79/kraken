@@ -27,6 +27,11 @@ case "${1:-start}" in
             fi
         done
         chmod u+x -- "$0"
+        # Web uploads can store scripts as 0644. Ignore the local executable-bit
+        # change so future git pulls can update the launcher without conflicts.
+        if command -v git >/dev/null && [[ "$(git rev-parse --show-toplevel 2>/dev/null || true)" == "$PWD" ]]; then
+            git config --local core.fileMode false
+        fi
         echo 'Set real values in config/.env and config/.req, add the Google JSON key to config/, then use ./kraken.sh start.'
         ;;
     build) dc build ;;
